@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Applications</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand">Job Tracker</span>
+    <div>
+      <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+      <a href="companies.html" class="btn btn-secondary btn-sm">Companies</a>
+      <button onclick="logout()" class="btn btn-danger btn-sm">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <!-- ================= SEARCH ================= -->
+  <div class="card p-3 mb-4">
+    <h5>Search Applications</h5>
+    <div class="d-flex gap-2">
+      <input id="searchKeyword"
+             class="form-control"
+             placeholder="Search by company, job, status or salary">
+      <button onclick="searchApplications()" class="btn btn-primary">
+        Search
+      </button>
+      <button onclick="loadApplications()" class="btn btn-secondary">
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= ADD FORM ================= -->
+  <h4>Add Job Application</h4>
+  <div class="card p-3 mb-4">
+
+    <select id="company_id" class="form-control mb-2"></select>
+
+    <input id="job_title" class="form-control mb-2" placeholder="Job Title">
+
+    <input id="application_date" type="date" class="form-control mb-2">
+
+    <select id="status" class="form-control mb-2">
+      <option value="interested">Interested</option>
+      <option value="applied">Applied</option>
+      <option value="interview">Interview</option>
+      <option value="offer">Offer</option>
+      <option value="rejected">Rejected</option>
+    </select>
+
+    <input id="expected_salary" class="form-control mb-2" placeholder="Expected Salary">
+    <input id="offered_salary" class="form-control mb-2" placeholder="Offered Salary">
+
+    <textarea id="notes" class="form-control mb-2" placeholder="Notes"></textarea>
+
+    <label class="form-label">Upload Resume (PDF)</label>
+    <input type="file" id="resume" class="form-control mb-2" accept="application/pdf">
+
+    <button onclick="addApplication()" class="btn btn-primary">
+      Add Application
+    </button>
+  </div>
+
+  <!-- ================= UPDATE FORM (HIDDEN) ================= -->
+  <div id="updateCard" class="card p-3 mb-4 d-none">
+    <h4>Update Application</h4>
+
+    <input type="hidden" id="update_id">
+
+    <input id="update_company" class="form-control mb-2" disabled>
+
+    <input id="update_job_title" class="form-control mb-2">
+
+    <input id="update_application_date" type="date" class="form-control mb-2">
+
+    <select id="update_status" class="form-control mb-2">
+      <option value="interested">Interested</option>
+      <option value="applied">Applied</option>
+      <option value="interview">Interview</option>
+      <option value="offer">Offer</option>
+      <option value="rejected">Rejected</option>
+    </select>
+
+    <input id="update_expected_salary" class="form-control mb-2">
+    <input id="update_offered_salary" class="form-control mb-2">
+
+    <textarea id="update_notes" class="form-control mb-2"></textarea>
+
+    <button onclick="updateApplication()" class="btn btn-success">
+      Save Changes
+    </button>
+    <button onclick="closeUpdateForm()" class="btn btn-secondary">
+      Cancel
+    </button>
+  </div>
+
+  <!-- ================= TABLE ================= -->
+  <h4>Your Applications</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Job</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="applicationTable"></tbody>
+  </table>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/applications.js"></script>
+</body>
+</html>
