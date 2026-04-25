@@ -9,53 +9,161 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f9fb;
-      margin: 0;
-      padding: 20px;
-    }
+ <style>
+body{
+  font-family:Arial, sans-serif;
+  background:#f5f7fb;
+  margin:0;
+  padding:20px;
+}
 
-    h2 {
-      margin-bottom: 15px;
-    }
+/* Navbar */
+.navbar{
+  border-radius:12px;
+  margin-bottom:25px;
+  padding:12px 18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
 
-    .status-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
+/* Headings */
+h2,h3{
+  font-weight:700;
+  color:#1f2937;
+  margin-bottom:18px;
+}
 
-    .status {
-      padding: 10px 16px;
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+/* Stats Cards */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-bottom:20px;
+}
 
-    .stats {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+.stats .col{
+  background:#fff;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  font-size:18px;
+  font-weight:700;
+  color:#111827;
+  border:none;
+}
 
-    .col {
-      background: #ffffff;
-      padding: 15px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      min-width: 120px;
-      font-weight: bold;
-    }
+/* Action Bar */
+.d-flex.align-items-center.justify-content-between{
+  background:#fff;
+  padding:14px 16px;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom:20px;
+}
 
-    .group-header {
-      background: #f1f3f5;
-      font-weight: bold;
-    }
-  </style>
+/* Buttons */
+.btn{
+  border-radius:8px;
+  font-weight:600;
+  padding:8px 14px;
+}
+
+/* Table Card */
+.card{
+  border:none;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* Table */
+.table{
+  margin:0;
+}
+
+.table thead{
+  background:#eef2ff;
+}
+
+.table thead th{
+  font-size:15px;
+  font-weight:700;
+  color:#374151;
+  padding:14px;
+  white-space:nowrap;
+}
+
+.table tbody td{
+  padding:14px;
+  vertical-align:middle;
+  font-size:15px;
+}
+
+.table-hover tbody tr:hover{
+  background:#f9fafb;
+}
+
+/* Status Badges */
+.badge{
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* Dropdown */
+.dropdown-menu{
+  border:none;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Checkbox */
+input[type="checkbox"]{
+  width:16px;
+  height:16px;
+  cursor:pointer;
+}
+
+/* Resume Link */
+a{
+  text-decoration:none;
+  font-weight:600;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  body{
+    padding:10px;
+  }
+
+  h2,h3{
+    font-size:22px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .table{
+    font-size:13px;
+  }
+
+  .table thead th,
+  .table tbody td{
+    padding:10px;
+  }
+
+  .d-flex.align-items-center.justify-content-between{
+    flex-direction:column;
+    align-items:stretch !important;
+    gap:12px;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -63,8 +171,7 @@
   <div class="container-fluid">
     <span class="navbar-brand">Job Tracker</span>
     <div>
-      <a href="applications.html" class="btn btn-secondary btn-sm">Applications</a>
-      <button onclick="logout()" class="btn btn-danger btn-sm">Logout</button>
+    <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
     </div>
   </div>
 </nav>
@@ -130,8 +237,7 @@
         <li><label><input type="checkbox" checked onchange="toggleColumn(5)"> City</label></li>
         <li><label><input type="checkbox" checked onchange="toggleColumn(6)"> Status</label></li>
         <li><label><input type="checkbox" checked onchange="toggleColumn(7)"> Date Applied</label></li>
-        <li><label><input type="checkbox" checked onchange="toggleColumn(8)"> Reminder</label></li>
-        <li><label><input type="checkbox" checked onchange="toggleColumn(9)"> Resume</label></li>
+        <li><label><input type="checkbox" checked onchange="toggleColumn(8)"> Resume</label></li>
       </ul>
     </div>
 
@@ -141,7 +247,7 @@
         Menu
       </button>
       <ul class="dropdown-menu">
-         <li><a class="dropdown-item" onclick="showActive()">Active Jobs</a></li>
+        
     <li><a class="dropdown-item" onclick="showArchived()">Archived Jobs</a></li>
     <li><a class="dropdown-item" onclick="exportTable()">Export Report</a></li>
       </ul>
@@ -167,7 +273,6 @@
             <th>City</th>
             <th>Status</th>
             <th>Date Applied</th>
-            <th>Reminder</th>
             <th>Resume</th>
           </tr>
         </thead>
@@ -188,14 +293,7 @@
         row.children[index].style.display === 'none' ? '' : 'none';
     });
   }
-
- 
-
-  // function showArchived() {
-  //   alert('Show archived jobs (backend coming next)');
-  // }
-
-  function exportTable() {
+ function exportTable() {
     let csv = [];
     document.querySelectorAll('#jobTableMain tr').forEach(row => {
       let cols = [...row.children].map(td => td.innerText);

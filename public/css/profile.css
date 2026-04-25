@@ -1,0 +1,153 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f8f9fa;
+  font-family:Arial, sans-serif;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar{
+  padding:14px 20px;
+}
+
+.navbar-brand{
+  font-size:28px;
+  font-weight:700;
+}
+
+/* =========================
+   PROFILE CONTAINER
+========================= */
+.profile-wrapper{
+  max-width:1200px;
+  margin:auto;
+}
+
+.profile-card{
+  background:#fff;
+  border-radius:16px;
+  padding:30px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+.profile-title{
+  font-size:34px;
+  font-weight:700;
+  margin-bottom:25px;
+  color:#212529;
+}
+
+/* =========================
+   FORM
+========================= */
+label{
+  font-weight:600;
+  margin-bottom:8px;
+  display:block;
+  color:#333;
+}
+
+.form-control,
+.form-select{
+  height:48px;
+  border-radius:10px;
+  border:1px solid #ced4da;
+  font-size:16px;
+}
+
+input[type="file"]{
+  padding:10px;
+  height:auto;
+}
+
+.form-control:focus,
+.form-select:focus{
+  border-color:#0d6efd;
+  box-shadow:0 0 0 0.2rem rgba(13,110,253,.15);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.save-btn{
+  padding:12px 24px;
+  font-size:16px;
+  font-weight:600;
+  border-radius:10px;
+  min-width:180px;
+}
+
+/* =========================
+   PREVIEW LINK
+========================= */
+#resumePreview{
+  display:block;
+  margin-top:8px;
+  font-size:14px;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media(max-width:992px){
+
+  .profile-card{
+    padding:24px;
+  }
+
+  .profile-title{
+    font-size:28px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:576px){
+
+  .navbar{
+    padding:12px;
+  }
+
+  .navbar-brand{
+    font-size:22px;
+  }
+
+  .navbar .btn{
+    font-size:13px;
+    padding:6px 10px;
+  }
+
+  .profile-card{
+    padding:18px;
+    border-radius:12px;
+  }
+
+  .profile-title{
+    font-size:24px;
+    margin-bottom:18px;
+  }
+
+  label{
+    font-size:14px;
+  }
+
+  .form-control,
+  .form-select{
+    height:44px;
+    font-size:14px;
+  }
+
+  .save-btn{
+    width:100%;
+  }
+}

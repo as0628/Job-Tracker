@@ -162,3 +162,41 @@ exports.getSuccessRate = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+exports.updateWeeklyGoal = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { weekly_goal } = req.body;
+
+    const goal = parseInt(weekly_goal, 10);
+
+    // Validation
+    if (isNaN(goal) || goal < 1 || goal > 12) {
+      return res.status(400).json({
+        message: "Weekly goal must be between 1 and 12"
+      });
+    }
+
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    user.weekly_goal = goal;
+    await user.save();
+
+    res.json({
+      message: "Weekly goal updated successfully",
+      weekly_goal: user.weekly_goal
+    });
+
+  } catch (err) {
+    console.error("UPDATE WEEKLY GOAL ERROR:", err);
+    res.status(500).json({
+      message: "Server error"
+    });
+  }
+};

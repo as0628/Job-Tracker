@@ -126,7 +126,7 @@ function renderJobs(jobs) {
         <td>${j.Company?.city || "-"}</td>
         <td><span class="badge bg-secondary">${j.status}</span></td>
         <td>${j.application_date}</td>
-        <td class="text-muted">-</td>
+        
         <td>
           ${
             currentView === "archived"
@@ -176,8 +176,7 @@ function renderGroupedByStatus(jobs) {
           <td>${j.Company?.city || "-"}</td>
           <td>${j.status}</td>
           <td>${j.application_date}</td>
-          <td>-</td>
-          <td>
+           <td>
             ${j.resume_path ? `<a href="${j.resume_path}" target="_blank">View</a>` : "-"}
           </td>
         </tr>

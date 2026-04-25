@@ -1,0 +1,274 @@
+/* =========================
+   GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+/* =========================
+   GRID LAYOUTS
+========================= */
+.dashboard-grid,
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.dashboard-card,
+.goal-card,
+.bottom-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  width: 100%;
+}
+
+.dashboard-card,
+.bottom-card {
+  min-height: 420px;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+.progress {
+  height: 16px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.progress-bar {
+  border-radius: 20px;
+}
+
+/* =========================
+   GOAL CARD
+========================= */
+.goal-card {
+  text-align: center;
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goal-edit-btn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.goal-circle-wrap {
+  width: 220px;
+  height: 220px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.goal-circle-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.goal-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.goal-center-text h2 {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.goal-pill {
+  display: inline-block;
+  background: #2f5e9c;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+
+.goal-message {
+  margin-top: 14px;
+  color: #555;
+}
+
+/* =========================
+   QUICK ACTION BUTTONS
+========================= */
+.quick-btns {
+  display: grid;
+  gap: 14px;
+}
+
+.quick-btns .btn {
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.calendar-header button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #0d6efd;
+  color: #fff;
+  font-size: 20px;
+}
+
+#monthYear {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+
+.weekdays span {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.calendar-days div {
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.calendar-days div:hover {
+  background: #e9ecef;
+}
+
+.today {
+  background: #198754;
+  color: #fff;
+}
+
+.has-reminder {
+  background: #ffc107;
+  font-weight: bold;
+}
+
+.empty {
+  visibility: hidden;
+}
+
+/* =========================
+   MODAL
+========================= */
+.goal-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.goal-modal-box {
+  width: 520px;
+  max-width: 95%;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 992px) {
+  .dashboard-grid,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card,
+  .bottom-card {
+    min-height: auto;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 22px;
+  }
+
+  h4, h5 {
+    font-size: 20px;
+  }
+
+  .goal-circle-wrap {
+    width: 170px;
+    height: 170px;
+  }
+
+  .goal-center-text h2 {
+    font-size: 32px;
+  }
+
+  .quick-btns .btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  #monthYear {
+    font-size: 20px;
+  }
+
+  .calendar-days div {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

@@ -55,6 +55,10 @@ reset_token: {
   type: DataTypes.STRING,
   allowNull: true
 },
+weekly_goal: {
+  type: DataTypes.INTEGER,
+  defaultValue: 12
+},
 reset_token_expiry: {
   type: DataTypes.DATE,
   allowNull: true
