@@ -3,7 +3,7 @@
 // ===============================
 if (!getToken()) {
   alert("Please login first");
-  window.location.href = "index.html";
+  window.location.href = "/html/index.html";
 }
 
 let allCompanies = [];

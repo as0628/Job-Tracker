@@ -12,7 +12,7 @@ async function login() {
 
   if (data.token) {
     localStorage.setItem("token", data.token);
-    window.location.href = "dashboard.html";
+    window.location.href = "/html/dashboard.html";
   } else {
     alert(data.message);
   }

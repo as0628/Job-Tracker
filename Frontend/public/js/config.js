@@ -6,7 +6,7 @@ function getToken() {
 
 function logout() {
   localStorage.removeItem("token");
-  window.location.href = "index.html";
+  window.location.href = "/html/index.html";
 }
 
 // const API_BASE_URL = "http://localhost:3000/api";
