@@ -17,7 +17,7 @@ app.use(cors({
   origin: [
     "http://localhost:3000",
     "https://job-tracker-2-ut8u.onrender.com",
-    "https://your-vercel-site.vercel.app"
+    "https://job-tracker-three-omega.vercel.app"
   ]
 }));
 
