@@ -15,8 +15,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 
-app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname,  "..", "Frontend", "public")));
 
 require("./cron/reminder.cron");
 app.use("/uploads", express.static("uploads"));
