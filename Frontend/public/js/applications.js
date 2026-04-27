@@ -3,7 +3,7 @@
 // ===============================
 if (!getToken()) {
   alert("Please login first");
-  window.location.href = "/html/index.html";
+  window.location.href = "index.html";
 }
 
 // ===============================
