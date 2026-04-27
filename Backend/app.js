@@ -1,6 +1,7 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -11,6 +12,13 @@ const path = require("path");
 
 // Middleware
 app.use(express.json());
+
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://job-tracker-2-ut8u.onrender.com"
+  ]
+}));
 
 // Static uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
