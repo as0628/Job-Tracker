@@ -1,139 +1,254 @@
-/* =========================
-   GLOBAL
-========================= */
+/* ===============================
+   RESET + THEME
+=============================== */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-body{
-  background:#f8f9fa;
-  font-family:Arial, sans-serif;
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#dbe3ee;
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --danger:#ef4444;
+  --shadow:0 10px 30px rgba(15,23,42,.08);
+  --radius:18px;
 }
 
-/* =========================
+body{
+  background:linear-gradient(180deg,#f8fbff 0%, #f4f7fb 100%);
+  font-family:Inter, Arial, sans-serif;
+  color:var(--text);
+}
+
+/* ===============================
    NAVBAR
-========================= */
+=============================== */
 .navbar{
+  background:rgba(17,24,39,.95)!important;
   padding:14px 20px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .navbar-brand{
-  font-size:28px;
+  font-size:30px;
+  font-weight:800;
+  color:#fff!important;
+}
+
+.navbar .btn{
+  border-radius:12px;
+  padding:10px 16px;
   font-weight:700;
 }
 
-/* =========================
-   PROFILE CONTAINER
-========================= */
+/* ===============================
+   PROFILE LAYOUT
+=============================== */
 .profile-wrapper{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
+  padding:20px;
 }
 
 .profile-card{
-  background:#fff;
-  border-radius:16px;
-  padding:30px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  background:var(--card);
+  border-radius:24px;
+  padding:32px;
+  box-shadow:var(--shadow);
 }
 
 .profile-title{
-  font-size:34px;
-  font-weight:700;
-  margin-bottom:25px;
-  color:#212529;
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:28px;
 }
 
-/* =========================
+/* ===============================
    FORM
-========================= */
+=============================== */
 label{
-  font-weight:600;
-  margin-bottom:8px;
   display:block;
-  color:#333;
+  margin-bottom:8px;
+  font-weight:700;
+  color:#1f2937;
 }
 
 .form-control,
 .form-select{
-  height:48px;
-  border-radius:10px;
-  border:1px solid #ced4da;
+  width:100%;
+  min-height:54px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:#f8fafc;
   font-size:16px;
-}
-
-input[type="file"]{
-  padding:10px;
-  height:auto;
+  padding:12px 14px;
+  transition:.2s ease;
 }
 
 .form-control:focus,
 .form-select:focus{
-  border-color:#0d6efd;
-  box-shadow:0 0 0 0.2rem rgba(13,110,253,.15);
+  background:#fff;
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(37,99,235,.12);
 }
 
-/* =========================
-   BUTTON
-========================= */
-.save-btn{
-  padding:12px 24px;
-  font-size:16px;
-  font-weight:600;
-  border-radius:10px;
-  min-width:180px;
+input[type="file"]{
+  min-height:54px;
+  padding:10px;
 }
 
-/* =========================
-   PREVIEW LINK
-========================= */
+small,
 #resumePreview{
   display:block;
   margin-top:8px;
   font-size:14px;
+  color:var(--muted);
 }
 
-/* =========================
+#resumePreview a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* ===============================
+   BUTTON
+=============================== */
+.save-btn{
+  margin-top:10px;
+  min-width:220px;
+  padding:14px 24px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  font-size:16px;
+  font-weight:800;
+  box-shadow:0 10px 20px rgba(37,99,235,.18);
+}
+
+.save-btn:hover{
+  transform:translateY(-1px);
+}
+
+/* ===============================
+   TOAST NOTIFICATION
+=============================== */
+.toast-box{
+  position:fixed;
+  top:20px;
+  right:20px;
+  min-width:280px;
+  max-width:360px;
+  background:#fff;
+  border-radius:16px;
+  padding:16px 18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  z-index:9999;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  animation:slideIn .25s ease;
+}
+
+.toast-success{
+  border-left:5px solid #16a34a;
+}
+
+.toast-error{
+  border-left:5px solid #ef4444;
+}
+
+.toast-icon{
+  font-size:20px;
+  line-height:1;
+}
+
+.toast-content h6{
+  margin:0 0 4px;
+  font-size:16px;
+  font-weight:800;
+}
+
+.toast-content p{
+  margin:0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+@keyframes slideIn{
+  from{
+    opacity:0;
+    transform:translateY(-10px) translateX(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) translateX(0);
+  }
+}
+
+/* ===============================
    TABLET
-========================= */
-@media(max-width:992px){
+=============================== */
+@media (max-width:992px){
 
   .profile-card{
     padding:24px;
   }
 
   .profile-title{
-    font-size:28px;
+    font-size:34px;
   }
 }
 
-/* =========================
+/* ===============================
    MOBILE
-========================= */
-@media(max-width:576px){
+=============================== */
+@media (max-width:576px){
 
   .navbar{
     padding:12px;
   }
 
+  .navbar .container-fluid{
+    flex-direction:column;
+    align-items:flex-start!important;
+    gap:10px;
+  }
+
   .navbar-brand{
-    font-size:22px;
+    font-size:24px;
+  }
+
+  .navbar div:last-child{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
   }
 
   .navbar .btn{
-    font-size:13px;
-    padding:6px 10px;
+    width:100%;
+    padding:11px;
+    font-size:14px;
+  }
+
+  .profile-wrapper{
+    padding:14px;
   }
 
   .profile-card{
     padding:18px;
-    border-radius:12px;
+    border-radius:18px;
   }
 
   .profile-title{
-    font-size:24px;
+    font-size:28px;
     margin-bottom:18px;
   }
 
@@ -143,11 +258,22 @@ input[type="file"]{
 
   .form-control,
   .form-select{
-    height:44px;
-    font-size:14px;
+    min-height:50px;
+    font-size:15px;
+    border-radius:12px;
   }
 
   .save-btn{
     width:100%;
+    min-width:100%;
+    padding:14px;
+  }
+
+  .toast-box{
+    top:14px;
+    left:14px;
+    right:14px;
+    min-width:auto;
+    max-width:none;
   }
 }
