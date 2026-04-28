@@ -164,18 +164,10 @@ async function loadDashboard() {
 
     const data = await res.json();
 
-    const stats = document.getElementById("stats");
-
-    if (stats) {
-      stats.innerHTML = `
-        <div class="col">Total: ${data.total}</div>
-        <div class="col">Interested: ${data.interested}</div>
-        <div class="col">Applied: ${data.applied}</div>
-        <div class="col">Interview: ${data.interview}</div>
-        <div class="col">Offer: ${data.offer}</div>
-        <div class="col">Rejected: ${data.rejected}</div>
-      `;
-    }
+   const stats = document.getElementById("stats");
+if (stats) {
+  stats.style.display = "none";
+}
 
     const total = data.total || 1;
 
