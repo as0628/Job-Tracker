@@ -454,108 +454,124 @@ h5{
 }
 
 /* ===============================
-   MOBILE
+   MOBILE BIGGER UI FIX
 =============================== */
-@media (max-width:576px){
+@media (max-width: 576px){
 
-  .container{
-    padding:14px;
+  html{
+    font-size:18px;
   }
 
-  .navbar .container-fluid{
-    flex-direction:column;
-    align-items:flex-start!important;
-    gap:10px;
+  body{
+    zoom:1.05;
+  }
+
+  .container{
+    padding:12px !important;
+  }
+
+  .navbar{
+    padding:12px 0 !important;
   }
 
   .navbar-brand{
-    font-size:24px;
-  }
-
-  .navbar .d-flex{
-    width:100%;
-    display:grid!important;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+    font-size:32px !important;
+    font-weight:800;
   }
 
   .navbar .btn{
-    width:100%;
-    padding:11px;
+    font-size:16px !important;
+    padding:12px !important;
+    min-height:48px;
   }
 
   h4{
-    font-size:26px;
+    font-size:34px !important;
+    margin-bottom:20px;
   }
 
   h5{
-    font-size:20px;
+    font-size:28px !important;
+    margin-bottom:16px;
+  }
+
+  p, span, div, small, a, button{
+    font-size:18px !important;
+  }
+
+  .card,
+  .dashboard-card,
+  .goal-card,
+  .bottom-card{
+    padding:22px !important;
+    border-radius:20px !important;
+    margin-bottom:18px;
   }
 
   #stats{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr !important;
+    gap:12px;
   }
 
   #stats .col{
-    font-size:14px;
-    padding:12px 8px;
+    font-size:18px !important;
+    padding:16px !important;
   }
 
-  .dashboard-card,
-  .bottom-card,
-  .goal-card{
-    padding:18px;
-    border-radius:16px;
-  }
-
-  .goal-header{
-    align-items:flex-start;
+  .progress{
+    height:18px !important;
   }
 
   .goal-circle-wrap{
-    width:210px;
-    height:210px;
+    width:280px !important;
+    height:280px !important;
   }
 
   .goal-center-text h2{
-    font-size:46px;
+    font-size:64px !important;
+  }
+
+  .goal-center-text p{
+    font-size:18px !important;
+  }
+
+  .goal-pill{
+    font-size:18px !important;
+    padding:12px 24px !important;
+  }
+
+  .goal-message{
+    font-size:18px !important;
+    line-height:1.6;
   }
 
   .quick-btns .btn{
-    font-size:15px;
-    padding:14px;
+    font-size:18px !important;
+    padding:16px !important;
+    min-height:56px;
   }
 
   #monthYear{
-    font-size:20px;
+    font-size:26px !important;
   }
 
   .calendar-header button{
-    width:38px;
-    height:38px;
-    font-size:20px;
-  }
-
-  .weekdays,
-  .calendar-days{
-    gap:6px;
-  }
-
-  .calendar-days div{
-    font-size:14px;
-    border-radius:10px;
-  }
-
-  .goal-modal-box{
-    padding:18px;
-    border-radius:18px;
-  }
-
-  .goal-modal-top h4{
+    width:44px;
+    height:44px;
     font-size:22px;
   }
 
-  .goal-modal-actions{
-    grid-template-columns:1fr;
+  .calendar-days div,
+  .weekdays span{
+    font-size:16px !important;
+    padding:10px 0;
+  }
+
+  .goal-modal-box{
+    padding:20px !important;
+  }
+
+  .goal-modal-top h4{
+    font-size:26px !important;
   }
 }
