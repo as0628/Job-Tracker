@@ -2,8 +2,37 @@
 // AUTH GUARD
 // ===============================
 if (!getToken()) {
-  alert("Please login first");
-  window.location.href = "index.html";
+  showToast("error", "Login Required", "Please login first");
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 1200);
+}
+
+// ===============================
+// TOAST UI
+// ===============================
+function showToast(type, title, message) {
+  const oldToast = document.querySelector(".toast-box");
+  if (oldToast) oldToast.remove();
+
+  const toast = document.createElement("div");
+  toast.className = `toast-box ${type === "success" ? "toast-success" : "toast-error"}`;
+
+  toast.innerHTML = `
+    <div class="toast-icon">${type === "success" ? "✅" : "❌"}</div>
+    <div class="toast-content">
+      <h6>${title}</h6>
+      <p>${message}</p>
+    </div>
+  `;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(-10px)";
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
 }
 
 // ===============================
@@ -19,27 +48,28 @@ async function loadProfile() {
 
     const user = await res.json();
 
-    document.getElementById("career_goal").value = user.career_goal || "";
-    document.getElementById("target_title").value = user.target_title || "";
-    document.getElementById("target_date").value = user.target_date || "";
-    document.getElementById("salary_min").value = user.salary_min || "";
-    document.getElementById("salary_max").value = user.salary_max || "";
-    document.getElementById("currency").value = user.currency || "";
-    document.getElementById("current_status").value = user.current_status || "";
+    career_goal.value = user.career_goal || "";
+    target_title.value = user.target_title || "";
+    target_date.value = user.target_date || "";
+    salary_min.value = user.salary_min || "";
+    salary_max.value = user.salary_max || "";
+    currency.value = user.currency || "";
+    current_status.value = user.current_status || "";
 
     if (user.resume_path) {
-      document.getElementById("resumePreview").innerHTML =
+      resumePreview.innerHTML =
         `Uploaded: <a href="/${user.resume_path}" target="_blank">View Resume</a>`;
     }
+
   } catch (err) {
-    console.error("LOAD PROFILE ERROR:", err);
+    showToast("error", "Load Failed", "Could not load profile data");
   }
 }
 
 // ===============================
 // UPDATE PROFILE
 // ===============================
-document.getElementById("profileForm").addEventListener("submit", async e => {
+document.getElementById("profileForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const formData = new FormData();
@@ -61,6 +91,10 @@ document.getElementById("profileForm").addEventListener("submit", async e => {
   }
 
   try {
+    const btn = document.querySelector(".save-btn");
+    btn.disabled = true;
+    btn.innerText = "Saving...";
+
     const res = await fetch(`${API_BASE_URL}/profile`, {
       method: "PUT",
       headers: {
@@ -71,10 +105,15 @@ document.getElementById("profileForm").addEventListener("submit", async e => {
 
     if (!res.ok) throw new Error();
 
-    alert("Profile updated successfully");
+    showToast("success", "Profile Saved", "Your profile was updated successfully");
     loadProfile();
+
   } catch (err) {
-    alert("Profile update failed");
+    showToast("error", "Update Failed", "Unable to save profile");
+  } finally {
+    const btn = document.querySelector(".save-btn");
+    btn.disabled = false;
+    btn.innerText = "Save Profile";
   }
 });
 

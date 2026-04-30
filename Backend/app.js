@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "..", "Frontend", "public")));
 // Home route
 app.get("/", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "..", "Frontend", "public", "index.html")
+    path.join(__dirname, "..", "Frontend", "public", "Guesthomepage.html")
   );
 });
 
